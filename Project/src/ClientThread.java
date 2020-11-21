@@ -120,21 +120,21 @@ public class ClientThread implements Runnable {
 		{
 			//to wait for turn 
 			while (true) {
-			if (Server.getID()==0) {
-					System.out.println("Waiting for opposition to login");
+			if (Server.getID()==0 && this.id==1) {
+					System.out.println("Player A goes first (10 seconds to go)");
 
 			}
 			else {
 				pw.println("Waiting for opposition (10 seconds)");
-				/*for (int i=0; i<=10; i++) {
-					//pw.println(i+ "seconds");
+				for (int i=0; i<=10; i++) {
+					pw.println(i+ "seconds");
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}*/
+				}
 			}
 				boolean x = Server.setID(id);
 				pw.println("PLEASE ATTACK ON A CHOSEN LOCATION! Format (character integer) e.g [a 3]");
