@@ -29,7 +29,20 @@ public class ServerThread implements Runnable {
 			{
 				
 				String serverResponse = br.readLine();
-				if (serverResponse.equals("gameover")) {
+				if (serverResponse==null) {
+					try {
+						synchronized (this) {
+							this.wait();
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if (serverResponse.equals("gameover")) {
+					synchronized (this) {
+						this.notifyAll();
+					}
 					break;
 				}
 				System.out.println("From SERVER: " + serverResponse);

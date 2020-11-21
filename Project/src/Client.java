@@ -15,14 +15,13 @@ public class Client {
 
 	private static final String ip = "localhost";
     private static final int port = 4321;
-    static String username = "";
-    
-    /*public static String getUsername() {
-    	return username;
-    }*/
+    public static String username;
     
     public static void main(String[] args)
     {
+    	login();
+    }
+    public static void login() {
     	try 
     	{
     		final Scanner scanner = new Scanner(System.in);
@@ -105,7 +104,7 @@ public class Client {
 							    	s = rs.getInt(1);
 								}
 								String name = "Guest" + s;
-								username = name;
+								username = null;
 								try {
 										String sql = " INSERT INTO General_Info"
 										        + " VALUES (?, ?, ?, ?, ?, ?)";
@@ -192,7 +191,7 @@ public class Client {
 				}
 			}
 			
-			
+			//System.out.println(getUsername());
 			new Thread(serverHandler).start();
 			
 			int numGuess = 0;

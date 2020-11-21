@@ -46,6 +46,7 @@ public class Server {
 				Socket client = ss.accept();
 				total += 1;
 				System.out.println("[SERVER] connected to client: " + total +  client.getRemoteSocketAddress());
+				//String username = clients.get(0).getUsername();
 				ClientThread clientHandler = new ClientThread(total, client, clients);
 				clients.add(clientHandler);
 				if (total == 2)
